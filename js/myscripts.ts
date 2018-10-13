@@ -20,7 +20,7 @@ class Locations {
                   <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
                   <div class="desc">
                     <h3>${this.name}</h3>
-                    <p>Address: ${this.ZIP+" "+this.city}
+                    <p>Address: ${this.ZIP+" "+this.city} <br>
                     ${this.street}</p></div>
                 </div>
               </div>`;
@@ -49,9 +49,9 @@ webaddress:string;
                   <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
                   <div class="desc">
                     <h3>${this.name}</h3>
-                    <p>Address: ${this.ZIP+" "+this.city}
-                    Phone: ${this.phone}
-                    Type: ${this.type}
+                    <p>Address: ${this.ZIP+" "+this.city} <br>
+                    Phone: ${this.phone} <br>
+                    Type: ${this.type} <br>
                     Web: ${this.webaddress}</p></div>
                 </div>
               </div>`;
@@ -79,9 +79,9 @@ constructor(name, city, ZIP, street, timage, date, time, price) {
                   <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
                   <div class="desc">
                     <h3>${this.name}</h3>
-                    <p>Address: ${this.ZIP+" "+this.city}
-                    Date: ${this.date}
-                    Time: ${this.time}
+                    <p>Address: ${this.ZIP+" "+this.city} <br>
+                    Date: ${this.date} <br>
+                    Time: ${this.time} <br>
                     Ticket price: € ${this.price}</p></div>
                 </div>
               </div>`;

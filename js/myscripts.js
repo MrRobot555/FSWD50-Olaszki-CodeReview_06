@@ -20,7 +20,7 @@ var Locations = /** @class */ (function () {
         this.timage = timage;
     }
     Locations.prototype.loc_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + "\n                    " + this.street + "</p></div>\n                </div>\n              </div>";
+        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    " + this.street + "</p></div>\n                </div>\n              </div>";
     };
     return Locations;
 }());
@@ -34,7 +34,7 @@ var Restaurant = /** @class */ (function (_super) {
         return _this;
     }
     Restaurant.prototype.res_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + "\n                    Phone: " + this.phone + "\n                    Type: " + this.type + "\n                    Web: " + this.webaddress + "</p></div>\n                </div>\n              </div>";
+        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    Phone: " + this.phone + " <br>\n                    Type: " + this.type + " <br>\n                    Web: " + this.webaddress + "</p></div>\n                </div>\n              </div>";
     };
     return Restaurant;
 }(Locations));
@@ -48,7 +48,7 @@ var Events = /** @class */ (function (_super) {
         return _this;
     }
     Events.prototype.ev_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + "\n                    Date: " + this.date + "\n                    Time: " + this.time + "\n                    Ticket price: \u20AC " + this.price + "</p></div>\n                </div>\n              </div>";
+        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    Date: " + this.date + " <br>\n                    Time: " + this.time + " <br>\n                    Ticket price: \u20AC " + this.price + "</p></div>\n                </div>\n              </div>";
     };
     return Events;
 }(Locations));
