@@ -34,7 +34,7 @@ var Restaurant = /** @class */ (function (_super) {
         return _this;
     }
     Restaurant.prototype.res_render = function () {
-        return "<p>Phone number: " + this.phone + "\n              Web address: " + this.webaddress + "</p>";
+        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + "\n                    Phone: " + this.phone + "\n                    Type: " + this.type + "\n                    Web: " + this.webaddress + "</p></div>\n                </div>\n              </div>";
     };
     return Restaurant;
 }(Locations));
@@ -48,7 +48,7 @@ var Events = /** @class */ (function (_super) {
         return _this;
     }
     Events.prototype.ev_render = function () {
-        return "<p>Event date: " + this.date + "\n              Event time: " + this.time + "\n              Ticket price: " + this.price + "</p>";
+        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + "\n                    Date: " + this.date + "\n                    Time: " + this.time + "\n                    Ticket price: \u20AC " + this.price + "</p></div>\n                </div>\n              </div>";
     };
     return Events;
 }(Locations));
@@ -61,6 +61,22 @@ var Event2 = new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - 
 var dataarray = [Location1, Location2, Restaurant1, Restaurant2, Event1, Event2];
 /* var loc1out:string = Location1.loc_render();
 $("#locationtarget").append(loc1out); */
-dataarray.forEach(function (indexnum) {
-    $("#locationtarget").append(indexnum.loc_render());
-});
+function locheader(title) {
+    var headerout = "<div class=\"col-md-6 col-md-offset-3 col-md-pull-3 animate-box\" data-animate-effect=\"fadeInLeft\" data-section=\"" + title + "\">\n                      <span class=\"heading-meta\">My favorite places</span>\n                      <h2 class=\"colorlib-heading\">" + title + "</h2>\n                      </div>";
+    $("#locationtarget").append(headerout);
+}
+/* dataarray.forEach((indexnum:any) => {
+     $("#locationtarget").append(indexnum.loc_render());
+ }); */
+locheader("Locations"); /*putting out header for places */
+for (var i = 0; i < 2; ++i) {
+    $("#locationtarget").append(dataarray[i].loc_render());
+}
+locheader("Restaurants"); /*putting out header for places */
+for (var i = 2; i < 4; ++i) {
+    $("#locationtarget").append(dataarray[i].res_render());
+}
+locheader("Events"); /*putting out header for places */
+for (var i = 4; i < 6; ++i) {
+    $("#locationtarget").append(dataarray[i].ev_render());
+}

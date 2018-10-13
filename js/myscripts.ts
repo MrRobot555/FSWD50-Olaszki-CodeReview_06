@@ -44,9 +44,19 @@ webaddress:string;
 }
 
    res_render() {
-   return `<p>Phone number: ${this.phone}
-              Web address: ${this.webaddress}</p>`;
-  }
+       return `<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="blog-entry">
+                  <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
+                  <div class="desc">
+                    <h3>${this.name}</h3>
+                    <p>Address: ${this.ZIP+" "+this.city}
+                    Phone: ${this.phone}
+                    Type: ${this.type}
+                    Web: ${this.webaddress}</p></div>
+                </div>
+              </div>`;
+   }
+
 }
 
 
@@ -64,10 +74,18 @@ constructor(name, city, ZIP, street, timage, date, time, price) {
 }
 
    ev_render() {
-   return `<p>Event date: ${this.date}
-              Event time: ${this.time}
-              Ticket price: ${this.price}</p>`;
-  }
+       return `<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                <div class="blog-entry">
+                  <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
+                  <div class="desc">
+                    <h3>${this.name}</h3>
+                    <p>Address: ${this.ZIP+" "+this.city}
+                    Date: ${this.date}
+                    Time: ${this.time}
+                    Ticket price: € ${this.price}</p></div>
+                </div>
+              </div>`;
+   }
 
 }
 
@@ -88,7 +106,34 @@ constructor(name, city, ZIP, street, timage, date, time, price) {
   /* var loc1out:string = Location1.loc_render();
   $("#locationtarget").append(loc1out); */
 
-  dataarray.forEach((indexnum:any) => {
-      $("#locationtarget").append(indexnum.loc_render());
-  });
+  function locheader(title:string) {
+    var headerout:string = `<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft" data-section="${title}">
+                      <span class="heading-meta">My favorite places</span>
+                      <h2 class="colorlib-heading">${title}</h2>
+                      </div>`;
+     $("#locationtarget").append(headerout);
+  }
 
+
+ /* dataarray.forEach((indexnum:any) => {
+      $("#locationtarget").append(indexnum.loc_render());
+  }); */
+
+
+  locheader("Locations"); /*putting out header for places */
+
+  for (var i = 0; i < 2; ++i) {
+      $("#locationtarget").append(dataarray[i].loc_render());
+  }
+
+  locheader("Restaurants"); /*putting out header for places */
+
+  for (var i = 2; i < 4; ++i) {
+      $("#locationtarget").append(dataarray[i].res_render());
+  }
+
+  locheader("Events"); /*putting out header for places */
+
+  for (var i = 4; i < 6; ++i) {
+      $("#locationtarget").append(dataarray[i].ev_render());
+  }
