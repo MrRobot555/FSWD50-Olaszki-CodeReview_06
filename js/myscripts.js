@@ -20,7 +20,20 @@ var Locations = /** @class */ (function () {
         this.timage = timage;
     }
     Locations.prototype.loc_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    " + this.street + "</p></div>\n                </div>\n              </div>";
+        var colu = Math.floor(12 / dataarray[0].length);
+        if (colu < 3) {
+            colu = 3;
+        }
+        ;
+        var colu_md;
+        if (colu == 12) {
+            colu_md = 12;
+        }
+        else {
+            colu_md = 6;
+        }
+        ;
+        return "<div class=\"col-lg-" + colu + " col-md-" + colu_md + " col-sm-12 parcontain\">\n                  <div class=\"containerset\">\n                  <div class=\"ourpic hidden-xs\" style=\"background-image: url('" + this.timage + "')\"></div>\n                  <figcaption>\n                    <h4>" + this.name + "</h4>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    " + this.street + "</p>\n                  </figcaption>\n                  </div>\n               </div>";
     };
     return Locations;
 }());
@@ -34,7 +47,20 @@ var Restaurant = /** @class */ (function (_super) {
         return _this;
     }
     Restaurant.prototype.res_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    Phone: " + this.phone + " <br>\n                    Type: " + this.type + " <br>\n                    Web: " + this.webaddress + "</p></div>\n                </div>\n              </div>";
+        var colu = Math.floor(12 / dataarray[1].length);
+        if (colu < 3) {
+            colu = 3;
+        }
+        ;
+        var colu_md;
+        if (colu == 12) {
+            colu_md = 12;
+        }
+        else {
+            colu_md = 6;
+        }
+        ;
+        return "<div class=\"col-lg-" + colu + " col-md-" + colu_md + " col-sm-12 parcontain\">\n                  <div class=\"containerset\">\n                  <div class=\"ourpic hidden-xs\" style=\"background-image: url('" + this.timage + "')\"></div>\n                  <figcaption>\n                    <h4>" + this.name + "</h4>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    " + this.street + " <br>\n                    Phone: " + this.phone + " <br>\n                    Type: " + this.type + " <br>\n                    Web: <a href=\"" + this.webaddress + "\">" + this.webaddress + "</a></p>\n                  </figcaption>\n                  </div>\n              </div>";
     };
     return Restaurant;
 }(Locations));
@@ -48,35 +74,66 @@ var Events = /** @class */ (function (_super) {
         return _this;
     }
     Events.prototype.ev_render = function () {
-        return "<div class=\"col-md-4 col-sm-6 animate-box\" data-animate-effect=\"fadeInLeft\">\n                <div class=\"blog-entry\">\n                  <div class=\"blog-img\"> <img src=\"" + this.timage + "\" class=\"img-responsive\"> </div>\n                  <div class=\"desc\">\n                    <h3>" + this.name + "</h3>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    Date: " + this.date + " <br>\n                    Time: " + this.time + " <br>\n                    Ticket price: \u20AC " + this.price + "</p></div>\n                </div>\n              </div>";
+        var colu = Math.floor(12 / dataarray[2].length);
+        if (colu < 3) {
+            colu = 3;
+        }
+        ;
+        var colu_md;
+        if (colu == 12) {
+            colu_md = 12;
+        }
+        else {
+            colu_md = 6;
+        }
+        ;
+        return "<div class=\"col-lg-" + colu + " col-md-" + colu_md + " col-sm-12 parcontain\">\n                  <div class=\"containerset\">\n                  <div class=\"ourpic hidden-xs\" style=\"background-image: url('" + this.timage + "')\"></div>\n                  <figcaption>\n                    <h4>" + this.name + "</h4>\n                    <p>Address: " + (this.ZIP + " " + this.city) + " <br>\n                    " + this.street + " <br>\n                    Date: " + this.date + " <br>\n                    Time: " + this.time + " <br>\n                    Ticket price: \u20AC " + this.price + "</p>\n                  </figcaption>\n                  </div>\n              </div>";
+        console.log("event render run");
     };
     return Events;
 }(Locations));
-var Location1 = new Locations("St. Charles Church", "Vienna", "1010", "Karlsplatz 1", "./images/loc1.jpg");
-var Location2 = new Locations("Zoo Vienna", "Vienna", "1130", "Maxingstraße 13b", "./images/loc2.jpg");
-var Restaurant1 = new Restaurant("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "./images/res1.png", "+43(1)5812308", "Thai Food", "http://www.lemonleaf.at");
-var Restaurant2 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./images/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
-var Event1 = new Events("Kris Kristofferson", "Vienna", "1150", "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "./images/event1.jpg", "Fr., 15.11.2018.", "20:00", "58,5");
-var Event2 = new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "./images/event2.jpg", "Sat., 09.12.2019.", "19:30", "47,80");
-var dataarray = [Location1, Location2, Restaurant1, Restaurant2, Event1, Event2];
-/* var loc1out:string = Location1.loc_render();
-$("#locationtarget").append(loc1out); */
+var Location1 = new Locations("St. Charles Church", "Vienna", "1010", "Karlsplatz 1", "./img/loc1.jpg");
+var Location2 = new Locations("Zoo Vienna", "Vienna", "1130", "Maxingstraße 13b", "./img/loc2.jpg");
+var Location3 = new Locations("St. Charles Church", "Vienna", "1010", "Karlsplatz 1", "./img/loc1.jpg");
+var Location4 = new Locations("Zoo Vienna", "Vienna", "1130", "Maxingstraße 13b", "./img/loc2.jpg");
+var Restaurant1 = new Restaurant("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "./img/res1.png", "+43(1)5812308", "Thai Food", "http://www.lemonleaf.at");
+var Restaurant2 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./img/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
+var Restaurant3 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./img/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
+var Event1 = new Events("Kris Kristofferson", "Vienna", "1150", "Wiener Stadthalle, Halle F, Roland Rainer Platz 1", "./img/event1.jpg", "Fr., 15.11.2018.", "20:00", "58,5");
+var Event2 = new Events("Lenny Kravitz", "Vienna", "1150", "Wiener Stadthalle - Halle D, Roland Rainer Platz 1", "./img/event2.jpg", "Sat., 09.12.2019.", "19:30", "47,80");
+var dataarray = new Array(1);
+dataarray[0] = [Location1, Location2, Location3, Location4];
+dataarray[1] = [Restaurant1, Restaurant2, Restaurant3];
+dataarray[2] = [Event1, Event2];
 function locheader(title) {
-    var headerout = "<div class=\"col-md-6 col-md-offset-3 col-md-pull-3 animate-box\" data-animate-effect=\"fadeInLeft\" data-section=\"" + title + "\">\n                      <span class=\"heading-meta\">My favorite places</span>\n                      <h2 class=\"colorlib-heading\">" + title + "</h2>\n                      </div>";
+    var headerout = "<div class=\"row\">\n                                <div class=\"text-center col-xs-12 col-md-12 col-sm-12 col-lg-12 extradecoration\">  \n                                <h2>Best " + title + "</h2>\n                                <p>These are the best " + title + " I visited</p>\n                                </div>\n                            </div>";
     $("#locationtarget").append(headerout);
 }
-/* dataarray.forEach((indexnum:any) => {
-     $("#locationtarget").append(indexnum.loc_render());
- }); */
-locheader("Locations"); /*putting out header for places */
-for (var i = 0; i < 2; ++i) {
-    $("#locationtarget").append(dataarray[i].loc_render());
+function listitems(ar) {
+    for (var i = 0, len = ar.length; i < len; i++) {
+        // inner loop applies to sub-arrays
+        if (i == 0) {
+            locheader("locations");
+        }
+        if (i == 1) {
+            locheader("restaurants");
+        }
+        if (i == 2) {
+            locheader("events");
+        }
+        for (var j = 0, len2 = ar[i].length; j < len2; j++) {
+            // accesses each element of each sub-array in turn
+            if (i == 0) {
+                $("#locationtarget").append(ar[i][j].loc_render());
+            }
+            if (i == 1) {
+                $("#locationtarget").append(ar[i][j].res_render());
+            }
+            if (i == 2) {
+                $("#locationtarget").append(ar[i][j].ev_render());
+            }
+            console.log(i, j, ar);
+        }
+    }
 }
-locheader("Restaurants"); /*putting out header for places */
-for (var i = 2; i < 4; ++i) {
-    $("#locationtarget").append(dataarray[i].res_render());
-}
-locheader("Events"); /*putting out header for places */
-for (var i = 4; i < 6; ++i) {
-    $("#locationtarget").append(dataarray[i].ev_render());
-}
+listitems(dataarray);

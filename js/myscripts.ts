@@ -13,20 +13,23 @@ class Locations {
   this.timage = timage;
  }
 
-
    loc_render(){
-   		return `<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                <div class="blog-entry">
-                  <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
-                  <div class="desc">
-                    <h3>${this.name}</h3>
+      let colu:number = Math.floor(12 / dataarray[0].length);
+      if (colu < 3) {colu=3};
+      let colu_md:number;
+      if (colu==12) {colu_md = 12} else {colu_md = 6};
+
+   		return `<div class="col-lg-${colu} col-md-${colu_md} col-sm-12 parcontain">
+                  <div class="containerset">
+                  <div class="ourpic hidden-xs" style="background-image: url('${this.timage}')"></div>
+                  <figcaption>
+                    <h4>${this.name}</h4>
                     <p>Address: ${this.ZIP+" "+this.city} <br>
-                    ${this.street}</p></div>
-                </div>
-              </div>`;
+                    ${this.street}</p>
+                  </figcaption>
+                  </div>
+               </div>`;
    }
-
-
 }
 
 class Restaurant extends Locations {
@@ -44,16 +47,23 @@ webaddress:string;
 }
 
    res_render() {
-       return `<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                <div class="blog-entry">
-                  <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
-                  <div class="desc">
-                    <h3>${this.name}</h3>
+      let colu:number = Math.floor(12 / dataarray[1].length);
+      if (colu < 3) {colu=3};
+      let colu_md:number;
+      if (colu==12) {colu_md = 12} else {colu_md = 6};
+
+       return `<div class="col-lg-${colu} col-md-${colu_md} col-sm-12 parcontain">
+                  <div class="containerset">
+                  <div class="ourpic hidden-xs" style="background-image: url('${this.timage}')"></div>
+                  <figcaption>
+                    <h4>${this.name}</h4>
                     <p>Address: ${this.ZIP+" "+this.city} <br>
+                    ${this.street} <br>
                     Phone: ${this.phone} <br>
                     Type: ${this.type} <br>
-                    Web: ${this.webaddress}</p></div>
-                </div>
+                    Web: <a href="${this.webaddress}">${this.webaddress}</a></p>
+                  </figcaption>
+                  </div>
               </div>`;
    }
 
@@ -74,66 +84,79 @@ constructor(name, city, ZIP, street, timage, date, time, price) {
 }
 
    ev_render() {
-       return `<div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                <div class="blog-entry">
-                  <div class="blog-img"> <img src="${this.timage}" class="img-responsive"> </div>
-                  <div class="desc">
-                    <h3>${this.name}</h3>
+      let colu:number = Math.floor(12 / dataarray[2].length);
+      if (colu < 3) {colu=3};
+      let colu_md:number;
+      if (colu==12) {colu_md = 12} else {colu_md = 6};
+
+       return `<div class="col-lg-${colu} col-md-${colu_md} col-sm-12 parcontain">
+                  <div class="containerset">
+                  <div class="ourpic hidden-xs" style="background-image: url('${this.timage}')"></div>
+                  <figcaption>
+                    <h4>${this.name}</h4>
                     <p>Address: ${this.ZIP+" "+this.city} <br>
+                    ${this.street} <br>
                     Date: ${this.date} <br>
                     Time: ${this.time} <br>
-                    Ticket price: € ${this.price}</p></div>
-                </div>
+                    Ticket price: € ${this.price}</p>
+                  </figcaption>
+                  </div>
               </div>`;
+              console.log("event render run");
    }
 
-}
+  }
+
+  let Location1 = new Locations("St. Charles Church","Vienna","1010","Karlsplatz 1","./img/loc1.jpg");
+  let Location2 = new Locations("Zoo Vienna","Vienna","1130","Maxingstraße 13b","./img/loc2.jpg");
+  let Location3 = new Locations("St. Charles Church","Vienna","1010","Karlsplatz 1","./img/loc1.jpg");
+  let Location4 = new Locations("Zoo Vienna","Vienna","1130","Maxingstraße 13b","./img/loc2.jpg");
+
+  let Restaurant1 = new Restaurant("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "./img/res1.png", "+43(1)5812308", "Thai Food", "http://www.lemonleaf.at");
+  let Restaurant2 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./img/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
+  let Restaurant3 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./img/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
+
+  let Event1 = new Events("Kris Kristofferson","Vienna","1150","Wiener Stadthalle, Halle F, Roland Rainer Platz 1","./img/event1.jpg","Fr., 15.11.2018.","20:00","58,5");
+  let Event2 = new Events("Lenny Kravitz","Vienna","1150","Wiener Stadthalle - Halle D, Roland Rainer Platz 1","./img/event2.jpg","Sat., 09.12.2019.","19:30","47,80");
+
+  let dataarray = new Array(1);
+
+  dataarray[0] = [Location1, Location2, Location3, Location4];
+  dataarray[1] = [Restaurant1, Restaurant2, Restaurant3];
+  dataarray[2] = [Event1, Event2];
 
 
-  let Location1 = new Locations("St. Charles Church","Vienna","1010","Karlsplatz 1","./images/loc1.jpg");
-  let Location2 = new Locations("Zoo Vienna","Vienna","1130","Maxingstraße 13b","./images/loc2.jpg");
-
-  let Restaurant1 = new Restaurant("Lemon Leaf Thai Restaurant", "Vienna", "1050", "Kettenbrückengasse 19", "./images/res1.png", "+43(1)5812308", "Thai Food", "http://www.lemonleaf.at");
-  let Restaurant2 = new Restaurant("SIXTA", "Vienna", "1050", "Schönbrunner Straße 21", "./images/res2.png", "+43(1)5852856l / +43(1)5852856", "Austrian Food", "http://www.sixta-restaurant.at/");
-
-  let Event1 = new Events("Kris Kristofferson","Vienna","1150","Wiener Stadthalle, Halle F, Roland Rainer Platz 1","./images/event1.jpg","Fr., 15.11.2018.","20:00","58,5");
-  let Event2 = new Events("Lenny Kravitz","Vienna","1150","Wiener Stadthalle - Halle D, Roland Rainer Platz 1","./images/event2.jpg","Sat., 09.12.2019.","19:30","47,80");
-
-  let dataarray:any[] = [Location1, Location2, Restaurant1, Restaurant2, Event1, Event2];
-
-
-
-  /* var loc1out:string = Location1.loc_render();
-  $("#locationtarget").append(loc1out); */
 
   function locheader(title:string) {
-    var headerout:string = `<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft" data-section="${title}">
-                      <span class="heading-meta">My favorite places</span>
-                      <h2 class="colorlib-heading">${title}</h2>
-                      </div>`;
+    var headerout:string = `<div class="row">
+                                <div class="text-center col-xs-12 col-md-12 col-sm-12 col-lg-12 extradecoration">  
+                                <h2>Best ${title}</h2>
+                                <p>These are the best ${title} I visited</p>
+                                </div>
+                            </div>`;
      $("#locationtarget").append(headerout);
   }
 
 
- /* dataarray.forEach((indexnum:any) => {
-      $("#locationtarget").append(indexnum.loc_render());
-  }); */
+function listitems(ar: any[][]) {
+for (var i=0, len=ar.length; i<len; i++) {
+    // inner loop applies to sub-arrays
 
+    if (i==0) {locheader("locations");}
+    if (i==1) {locheader("restaurants");}  
+    if (i==2) {locheader("events");}
 
-  locheader("Locations"); /*putting out header for places */
+    for (var j=0, len2=ar[i].length; j<len2; j++) {
+        // accesses each element of each sub-array in turn
 
-  for (var i = 0; i < 2; ++i) {
-      $("#locationtarget").append(dataarray[i].loc_render());
-  }
+            if (i==0) {$("#locationtarget").append(ar[i][j].loc_render());}
+            if (i==1) {$("#locationtarget").append(ar[i][j].res_render());}
+            if (i==2) {$("#locationtarget").append(ar[i][j].ev_render());}
 
-  locheader("Restaurants"); /*putting out header for places */
+            console.log(i, j, ar);
 
-  for (var i = 2; i < 4; ++i) {
-      $("#locationtarget").append(dataarray[i].res_render());
-  }
+    }
+}
+}
 
-  locheader("Events"); /*putting out header for places */
-
-  for (var i = 4; i < 6; ++i) {
-      $("#locationtarget").append(dataarray[i].ev_render());
-  }
+listitems(dataarray);
